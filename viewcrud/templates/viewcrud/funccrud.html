@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>게시판1</title> 
+    </head>
+    <body>
+        <a href="http://127.0.0.1:8000/">홈</a> <br>
+        <a href="{% url 'newblog' %}">글쓰기</a>
+
+        {% for blog in blogs %}
+            <h2>{{blog.title}}</h2>
+            <h5>{{blog.pub_date}}</h5>
+            <p>{{blog.body}}</p>
+            <a href="{% url 'update' blog.id %}">수정</a>
+            <a href="{% url 'delete' blog.id %}">삭제</a>
+
+            <hr>
+        {% endfor %}
+    </body>
+</html>
