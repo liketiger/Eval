@@ -9,6 +9,9 @@ from .models import ClassBlog
 
 # Create your views here.
 
+def welcome(request):
+    return render(request, 'classcrud/classblog_home.html')
+
 class BlogView(ListView):
     model = ClassBlog
 
