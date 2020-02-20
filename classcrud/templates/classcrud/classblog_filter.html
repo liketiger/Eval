@@ -5,15 +5,24 @@
         <title>강의 평가</title>
     </head>
     <body>
-        <a href="http://127.0.0.1:8000/">홈</a> <br>
+        <a href="http://127.0.0.1:8000/">로그아웃</a> <br>
         <a href="{% url 'new' %}"> 평가하기 </a>
         <br>
+        
+        {% block content %}
+        <form action="" method="get">
+            {{ filter.form.as_p }}
+            <input type="submit" value="검색" />
+        </form>        
+        {% endblock %}
+        <br>
+   
 
         {%for blog in object_list%}
-            <h2>{{blog.title}}</h2>
-            <h2>{{blog.prof}}</h2>
+            <h2>{{blog.강의명}}</h2>
+            <h2>{{blog.교수명}}</h2>
             <h5>{{blog.updated_at}}</h5>
-            <p>{{blog.body}}</p>
+            <p>{{blog.평가내용}}</p>
             <a href="{% url 'detail' blog.id %}"> 자세히보기 </a> <br>
             <a href="{% url 'change' blog.id %}"> 수정 </a> <br>
             <a href="{% url 'del' blog.id %}"> 삭제 </a> <br>
