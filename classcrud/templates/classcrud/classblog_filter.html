@@ -5,7 +5,12 @@
         <title>강의 평가</title>
     </head>
     <body>
-        <a href="http://127.0.0.1:8000/">로그아웃</a> <br>
+        <h5>{{user.username}}님이 로그인중입니다.</h5>
+        <a href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
+        <form id="logout" method="POST" action="{% url 'logout' %}">
+            {% csrf_token %} <input type="hidden"/>
+        </form>
+        <br>
         <a href="{% url 'new' %}"> 평가하기 </a>
         <br>
         
